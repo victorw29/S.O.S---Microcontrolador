@@ -1,19 +1,37 @@
-"version": 1,
-"author": "Wilton L. Silva",
-"edithor": "Wokwi",
-"parts": [
+{
+  "version": 1,
+  "author": "Victor Weverthon",
+  "editor": "wokwi",
+  "parts": [
     {
-        "type": "board-pi-pico-w",
-        "id": "pico",
-        "top": -70.45,
-        "left": -6.05,
-        "attrs": {"builder": "pico-sdk" }
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -22.45,
+      "left": -34.85,
+      "attrs": { "builder": "pico-sdk" }
     },
     {
-        "type": "wokwi-led",
-        "id":"led1",
-        "top": -61.2,
-        "left": -101.8,
-        "attrs": {"color": "red"}
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 15.6,
+      "left": -111.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 110.4,
+      "left": -125.35,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
     }
-]
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "pico:GP13", "green", [ "h0" ] ],
+    [ "led1:A", "pico:GP11", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
